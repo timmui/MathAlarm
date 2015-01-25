@@ -19,14 +19,6 @@
 		android:stretchColumns="*">
     </TextView>
 
-        <Button
-            android:id="@+id/b2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/tv1"
-            android:layout_below="@+id/txtTime"
-            android:text="@string/selectTime" />
-
         <TextView
             android:id="@+id/txtTime"
             android:layout_width="wrap_content"
@@ -34,5 +26,14 @@
             android:layout_alignTop="@+id/tv1"
             android:layout_marginTop="86dp"
             android:text="@string/selectedTime" />
+
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/txtTime"
+            android:layout_toRightOf="@+id/txtTime"
+            android:text="@string/selectTime" />
 
 </RelativeLayout>

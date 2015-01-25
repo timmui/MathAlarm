@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.TimePickerDialog;
-import android.content.Intent;
+//import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,8 +19,8 @@ public class MainActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		TextView tv =(TextView)findViewById(R.id.tv1);
 		tv.setText("Pick a time");
-		Button b1 = (Button)findViewById(R.id.b1);
-		b1.setOnClickListener(new View.OnClickListener() {
+		//Button b1 = (Button)findViewById(R.id.b1);
+		/*b1.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -28,7 +28,7 @@ public class MainActivity extends ActionBarActivity {
 				Intent intent = new Intent(MainActivity.this,setData.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 		
 		//-------------- Time Picker -----------------
 		final TextView txtTime = (TextView) findViewById(R.id.txtTime);
