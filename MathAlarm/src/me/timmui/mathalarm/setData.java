@@ -1,6 +1,9 @@
 package me.timmui.mathalarm;
 
+import java.util.Calendar;
+
 import android.support.v7.app.ActionBarActivity;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +17,6 @@ public class setData extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setdata);
 		//name.setText(getIntent().getExtras().getString("userName"));
-		TimePicker tm = (TimePicker)findViewById(R.id.timePicker1);
+		
 	}
 }

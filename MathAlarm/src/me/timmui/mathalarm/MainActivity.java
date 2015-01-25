@@ -1,6 +1,9 @@
 package me.timmui.mathalarm;
 
+import java.util.Calendar;
+
 import android.support.v7.app.ActionBarActivity;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,7 +18,7 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		TextView tv =(TextView)findViewById(R.id.tv1);
-		tv.setText("hello");
+		tv.setText("Pick a time");
 		Button b1 = (Button)findViewById(R.id.b1);
 		b1.setOnClickListener(new View.OnClickListener() {
 			
@@ -27,6 +30,32 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 		
+		//-------------- Time Picker -----------------
+		final TextView txtTime = (TextView) findViewById(R.id.txtTime);
+		
+		// Process to get Current Time
+        final Calendar c = Calendar.getInstance();
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+		
+		final TimePickerDialog tm = new TimePickerDialog(this,
+        new TimePickerDialog.OnTimeSetListener() {
+ 
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay,
+                    int minute) {
+                txtTime.setText("Selected time: "+hourOfDay + ":" + minute);
+            }
+        }, mHour, mMinute, false);
+		
+		Button b2 = (Button)findViewById(R.id.b2);
+		b2.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				tm.show ();
+			}
+		});
 	}
 
 	@Override
