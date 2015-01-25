@@ -8,6 +8,5 @@
     <string name="title_activity_setData">Pick Time</string>
     <string name="selectedTime">Selected time:</string>
     <string name="selectTime">Select Time</string>
-    <string name="currentTime">current time</string>
 
 </resources>
