@@ -19,16 +19,6 @@ public class MainActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 		TextView tv =(TextView)findViewById(R.id.tv1);
 		tv.setText("Pick a time");
-		//Button b1 = (Button)findViewById(R.id.b1);
-		/*b1.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(MainActivity.this,setData.class);
-				startActivity(intent);
-			}
-		});*/
 		
 		//-------------- Time Picker -----------------
 		final TextView txtTime = (TextView) findViewById(R.id.txtTime);
