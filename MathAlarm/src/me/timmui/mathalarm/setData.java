@@ -14,6 +14,6 @@ public class setData extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setdata);
 		//name.setText(getIntent().getExtras().getString("userName"));
-		//TimePicker tm = (TimePicker)findViewById(R.id.timePicker1);
+		TimePicker tm = (TimePicker)findViewById(R.id.timePicker1);
 	}
 }
