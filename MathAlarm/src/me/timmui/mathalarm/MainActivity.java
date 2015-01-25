@@ -4,7 +4,6 @@ import java.util.Calendar;
 
 import android.support.v7.app.ActionBarActivity;
 import android.app.TimePickerDialog;
-//import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
