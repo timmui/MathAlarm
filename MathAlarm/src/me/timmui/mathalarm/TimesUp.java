@@ -5,6 +5,7 @@ import java.util.Random;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Notification;
 import android.content.Intent;
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class TimesUp extends ActionBarActivity {
 		first = rand.nextInt((100-10)+1)+1;
 		second = rand.nextInt((100-10)+1)+1;
 		op = rand.nextInt((3-1)+1)+1;
+		throwAlarm();
 		
 		if (op == 1){
 			tv.setText(first+" + "+second+" = ");
@@ -102,7 +104,8 @@ public class TimesUp extends ActionBarActivity {
 	            alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 	        }
 	    }
-	    
+		Ringtone ringtone = RingtoneManager.getRingtone(this,(alarmSound));
+		ringtone.play();
 	}
 
 }
