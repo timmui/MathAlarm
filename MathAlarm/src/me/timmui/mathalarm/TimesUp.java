@@ -25,6 +25,7 @@ public class TimesUp extends ActionBarActivity {
 	int second;
 	int op;
 	int answer;
+	Ringtone ringtone;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,7 @@ public class TimesUp extends ActionBarActivity {
 				try{
 					if (answer == Integer.valueOf(et.getText().toString())){
 		            	Intent intent = new Intent(TimesUp.this,MainActivity.class);
+		            	ringtone.stop();
 		            	startActivity(intent);
 	            	}
 				}
