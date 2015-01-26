@@ -5,6 +5,7 @@ import java.util.Random;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,8 +28,8 @@ public class TimesUp extends ActionBarActivity {
 		setContentView(R.layout.activity_second);
 		TextView tv = (TextView)findViewById(R.id.question);
 		Random rand = new Random();
-		first = rand.nextInt((10-1)+1)+1;
-		second = rand.nextInt((10-1)+1)+1;
+		first = rand.nextInt((100-10)+1)+1;
+		second = rand.nextInt((100-10)+1)+1;
 		op = rand.nextInt((3-1)+1)+1;
 		
 		if (op == 1){
@@ -36,12 +37,9 @@ public class TimesUp extends ActionBarActivity {
 			answer = first+second;
 			}
 		else if (op == 2){
-			if (first > second){
+			if (first != second){
 				tv.setText(first+" - "+second+" = ");
 				answer = first-second;}
-			else if (first < second){
-				tv.setText(second+" - "+first+" = ");
-				answer = second-first;}
 			else{
 				tv.setText(first+" - "+(second+1)+" = ");
 				answer = first-(second+1);}
@@ -59,10 +57,15 @@ public class TimesUp extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (answer == Integer.parseInt((et.getText().toString()))){
-	            	Intent intent = new Intent(TimesUp.this,MainActivity.class);
-	            	startActivity(intent);
-	            }
+				try{
+					if (answer == Integer.valueOf(et.getText().toString())){
+		            	Intent intent = new Intent(TimesUp.this,MainActivity.class);
+		            	startActivity(intent);
+	            	}
+				}
+				catch (NumberFormatException e) {
+					Log.d("NumInput",e.toString());
+				}
 			}
 		});
 		
