@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
+// TODO IMPLEMENT THIS YOU STUPID IDIOTS!!! http://developer.android.com/reference/android/provider/AlarmClock.html
 public class TimesUp extends ActionBarActivity {
 	int first;
 	int second;
@@ -75,23 +76,6 @@ public class TimesUp extends ActionBarActivity {
 				}
 			}
 		});
-		
-		
-		et.setOnEditorActionListener(new OnEditorActionListener() {
-		    @Override
-		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-		        boolean handled = false;
-		        if (actionId == EditorInfo.IME_ACTION_SEND) {
-		            if (answer == Integer.parseInt((et.getText().toString()))){
-		            	Intent intent = new Intent(TimesUp.this,MainActivity.class);
-		            	startActivity(intent);
-		            }
-		            handled = true;
-		        }
-		        return handled;
-		    }
-		});
-		
 	}
 	@Override
 	public void onBackPressed() {
@@ -100,14 +84,17 @@ public class TimesUp extends ActionBarActivity {
 	private void throwAlarm (){
 		// Not Finished Implementation
 	    Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-	    if(alarmSound == null){
-	        alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-	        if(alarmSound == null){
-	            alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-	        }
+	    //if(alarmSound == null){
+	    //    alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+	    //    if(alarmSound == null){
+	    //        alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+	    //    }
+	    //}
+	    
+	    if (alarmSound != null){
+	    	Ringtone ringtone = RingtoneManager.getRingtone(this,(alarmSound));
+	    	ringtone.play();
 	    }
-		Ringtone ringtone = RingtoneManager.getRingtone(this,(alarmSound));
-		ringtone.play();
 	}
 
 }
