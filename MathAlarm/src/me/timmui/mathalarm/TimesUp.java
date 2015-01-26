@@ -3,7 +3,10 @@ package me.timmui.mathalarm;
 import java.util.Random;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.Notification;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -86,6 +89,20 @@ public class TimesUp extends ActionBarActivity {
 		});
 		
 	}
+	@Override
+	public void onBackPressed() {
+	}
 	
+	private void throwAlarm (){
+		// Not Finished Implementation
+	    Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+	    if(alarmSound == null){
+	        alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+	        if(alarmSound == null){
+	            alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+	        }
+	    }
+	    
+	}
 
 }
