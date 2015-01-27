@@ -3,7 +3,6 @@ package me.timmui.mathalarm;
 import java.util.Random;
 
 import android.support.v7.app.ActionBarActivity;
-import android.app.Notification;
 import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -15,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-// TODO IMPLEMENT THIS YOU STUPID IDIOTS!!! http://developer.android.com/reference/android/provider/AlarmClock.html
 public class TimesUp extends ActionBarActivity {
 	int first;
 	int second;
@@ -33,39 +31,23 @@ public class TimesUp extends ActionBarActivity {
 		second = rand.nextInt((100-10)+1)+1;
 		op = rand.nextInt((3-1)+1)+1;
 		throwAlarm();
-		while (op == 3)
-		{
-			if (first<=5||second<=5)
-			{
-				tv.setText(first+" x "+second+" = ");
-				answer = first*second;
-			}
-			else
-			{
-				first = rand.nextInt((100-10)+1)+1;
-				second = rand.nextInt((100-10)+1)+1;
-				op = rand.nextInt((2-1)+1)+1;
-			}
-			break;
-		}
-		if (op == 1)
-		{
+		
+		if (op == 1){
 			tv.setText(first+" + "+second+" = ");
 			answer = first+second;
-		}
-		else if (op == 2)
-		{
-			if (first != second)
-			{
+			}
+		else if (op == 2){
+			if (first != second){
 				tv.setText(first+" - "+second+" = ");
-				answer = first-second;
-			}
-			else
-			{
+				answer = first-second;}
+			else{
 				tv.setText(first+" - "+(second+1)+" = ");
-				answer = first-(second+1);
+				answer = first-(second+1);}
 			}
-		}
+		else if (op == 3){
+			tv.setText(first+" x "+second+" = ");
+			answer = first*second;
+			}
 
 		final EditText et = (EditText)findViewById(R.id.editText1);
 
@@ -93,7 +75,6 @@ public class TimesUp extends ActionBarActivity {
 	}
 
 	private void throwAlarm (){
-		// Not Finished Implementation
 		Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 		if(alarmSound == null){
 			alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);

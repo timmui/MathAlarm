@@ -24,8 +24,6 @@ public class MainActivity extends ActionBarActivity {
 	    Runnable myRunnableThread = new CountDownRunner();
 	    myThread= new Thread(myRunnableThread);   
 	    myThread.start();
-		TextView tv =(TextView)findViewById(R.id.tv1);
-		//tv.setText("Pick a time");
 		
 		//-------------- Time Picker -----------------
 		final TextView txtTime = (TextView) findViewById(R.id.txtTime);
@@ -66,11 +64,7 @@ public class MainActivity extends ActionBarActivity {
 	    runOnUiThread(new Runnable() {
 	        public void run() {
 	            try{
-	                TextView tv1 = (TextView)findViewById(R.id.tv1);
 	                Calendar c = Calendar.getInstance();
-	                int hour = c.get(Calendar.HOUR_OF_DAY);
-	                int minute = c.get(Calendar.MINUTE);
-	                int second = c.get(Calendar.SECOND);
 	                
 	                if (c.compareTo(alarm) >= 0 && alarmActiviated == false){
 	                	Intent intent = new Intent(MainActivity.this,TimesUp.class);
