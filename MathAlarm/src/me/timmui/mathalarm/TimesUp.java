@@ -22,7 +22,7 @@ public class TimesUp extends ActionBarActivity {
 	int op;
 	int answer;
 	Ringtone ringtone;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,38 +33,54 @@ public class TimesUp extends ActionBarActivity {
 		second = rand.nextInt((100-10)+1)+1;
 		op = rand.nextInt((3-1)+1)+1;
 		throwAlarm();
-		
-		if (op == 1){
+		while (op == 3)
+		{
+			if (first<=5||second<=5)
+			{
+				tv.setText(first+" x "+second+" = ");
+				answer = first*second;
+			}
+			else
+			{
+				first = rand.nextInt((100-10)+1)+1;
+				second = rand.nextInt((100-10)+1)+1;
+				op = rand.nextInt((2-1)+1)+1;
+			}
+			break;
+		}
+		if (op == 1)
+		{
 			tv.setText(first+" + "+second+" = ");
 			answer = first+second;
-			}
-		else if (op == 2){
-			if (first != second){
+		}
+		else if (op == 2)
+		{
+			if (first != second)
+			{
 				tv.setText(first+" - "+second+" = ");
-				answer = first-second;}
-			else{
+				answer = first-second;
+			}
+			else
+			{
 				tv.setText(first+" - "+(second+1)+" = ");
-				answer = first-(second+1);}
+				answer = first-(second+1);
 			}
-		else if (op == 3){
-			tv.setText(first+" x "+second+" = ");
-			answer = first*second;
-			}
-		
+		}
+
 		final EditText et = (EditText)findViewById(R.id.editText1);
-		
+
 		Button b1 = (Button) findViewById (R.id.button1);
 		b1.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				try{
 					if (answer == Integer.valueOf(et.getText().toString())){
-		            	Intent intent = new Intent(TimesUp.this,MainActivity.class);
-		            	ringtone.stop();
-		            	startActivity(intent);
-	            	}
+						Intent intent = new Intent(TimesUp.this,MainActivity.class);
+						ringtone.stop();
+						startActivity(intent);
+					}
 				}
 				catch (NumberFormatException e) {
 					Log.d("NumInput",e.toString());
@@ -75,21 +91,21 @@ public class TimesUp extends ActionBarActivity {
 	@Override
 	public void onBackPressed() {
 	}
-	
+
 	private void throwAlarm (){
 		// Not Finished Implementation
-	    Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-	    if(alarmSound == null){
-	        alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-	        if(alarmSound == null){
-	            alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-	        }
-	    }
-	    
-	    if (alarmSound != null){
-	    	ringtone = RingtoneManager.getRingtone(this,(alarmSound));
-	    	ringtone.play();
-	    }
+		Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+		if(alarmSound == null){
+			alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+			if(alarmSound == null){
+				alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+			}
+		}
+
+		if (alarmSound != null){
+			ringtone = RingtoneManager.getRingtone(this,(alarmSound));
+			ringtone.play();
+		}
 	}
 
 }
