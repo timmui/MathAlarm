@@ -10,15 +10,10 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
 
 // TODO IMPLEMENT THIS YOU STUPID IDIOTS!!! http://developer.android.com/reference/android/provider/AlarmClock.html
 public class TimesUp extends ActionBarActivity {
@@ -84,15 +79,15 @@ public class TimesUp extends ActionBarActivity {
 	private void throwAlarm (){
 		// Not Finished Implementation
 	    Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-	    //if(alarmSound == null){
-	    //    alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-	    //    if(alarmSound == null){
-	    //        alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-	    //    }
-	    //}
+	    if(alarmSound == null){
+	        alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+	        if(alarmSound == null){
+	            alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+	        }
+	    }
 	    
 	    if (alarmSound != null){
-	    	Ringtone ringtone = RingtoneManager.getRingtone(this,(alarmSound));
+	    	ringtone = RingtoneManager.getRingtone(this,(alarmSound));
 	    	ringtone.play();
 	    }
 	}
