@@ -18,9 +18,12 @@ import android.view.View;
 import android.widget.*;
 
 public class MainActivity extends ActionBarActivity {
+	//variable declaration
 	PendingIntent pi;
     BroadcastReceiver br;
     AlarmManager am;
+    
+    //sets the delay of the timer.
     final static private long DISPLAY_DELAY = 5000;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class MainActivity extends ActionBarActivity {
 			
 			@Override
 			public void onClick(View v) {
+				//initializes the alarm manager and set the wakeup time
 				am.set( AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + 
 						DISPLAY_DELAY, pi );
 				//AlarmClockInfo info = new AlarmClockInfo();
@@ -41,13 +45,17 @@ public class MainActivity extends ActionBarActivity {
 	}
 	public void setUp()
 	{
+		//explained in todays lecture(receives intent made by alarm manager)
 		br = new BroadcastReceiver(){
 			@Override
+			//some sec after,receives the alarm manager and makes a toast.
 			public void onReceive(Context c, Intent i){
 				Toast.makeText(c, DISPLAY_DELAY/1000+" secs later", Toast.LENGTH_SHORT).show();
 			}
 		};
+		//register the receiver
 		registerReceiver(br, new IntentFilter("me.timmui.mathalarm"));
+		//dont know what this does.
 		pi = PendingIntent.getBroadcast(this,0,new Intent("me.timmui.mathalarm"),0);
 		am = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 	}
