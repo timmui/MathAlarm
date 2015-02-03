@@ -9,5 +9,7 @@
     <string name="selectedTime">Selected time:</string>
     <string name="selectTime">Select Time</string>
     <string name="title_activity_second">Second</string>
+    <string name="setAlarm">Set Alarm</string>
+    <string name="setRinger">Set Ringtone</string>
 
 </resources>
