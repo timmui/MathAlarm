@@ -3,6 +3,7 @@ package me.timmui.mathalarm;
 import java.util.Calendar;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
@@ -59,6 +60,10 @@ public class MainActivity extends ActionBarActivity {
                 
                 //initializes the alarm manager and set the wakeup time
 				alarmManager.set( AlarmManager.RTC_WAKEUP, alarm.getTimeInMillis(), pendingIntent );
+				
+				//Confirmation Toast
+				Toast.makeText(getApplicationContext(), String.format("Alarm set for %02d:%02d", hourOfDay, minute), 
+						   Toast.LENGTH_SHORT).show();
             }
         }, mHour, mMinute, false);
 				
@@ -84,7 +89,7 @@ public class MainActivity extends ActionBarActivity {
 		});
 		
 		Button b3 = (Button)findViewById(R.id.b3);
-		b2.setOnClickListener(new View.OnClickListener() {
+		b3.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -92,9 +97,28 @@ public class MainActivity extends ActionBarActivity {
 				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALARM);
 				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Select Tone");
 				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, (Uri) null);
+				MainActivity.this.startActivityForResult (intent,5);
 			}
 		});
-	}
+	}	
+	@Override
+	 protected void onActivityResult(final int requestCode, final int resultCode, final Intent intent)
+	 {
+		//super.onActivityResult(requestCode,resultCode,intent);
+	     if (resultCode == Activity.RESULT_OK && requestCode == 5)
+	     {
+	          Uri uri = intent.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+
+	          if (uri != null)
+	          {
+	              RingtoneManager.setActualDefaultRingtoneUri(getApplicationContext(), RingtoneManager.TYPE_ALARM, uri);
+	            //Confirmation Toast
+					Toast.makeText(getApplicationContext(), "Ringtone Set!", 
+							   Toast.LENGTH_SHORT).show();
+	          }
+	      }            
+	  }
+	
 	public void setUp()
 	{
 		//receives intent made by alarm manager
