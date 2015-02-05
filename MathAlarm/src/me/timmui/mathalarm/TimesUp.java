@@ -26,28 +26,8 @@ public class TimesUp extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_second);
 		TextView tv = (TextView)findViewById(R.id.question);
-		Random rand = new Random();
-		first = rand.nextInt((100-10)+1)+1;
-		second = rand.nextInt((100-10)+1)+1;
-		op = rand.nextInt((3-1)+1)+1;
 		throwAlarm();
-		
-		if (op == 1){
-			tv.setText(first+" + "+second+" = ");
-			answer = first+second;
-			}
-		else if (op == 2){
-			if (first != second){
-				tv.setText(first+" - "+second+" = ");
-				answer = first-second;}
-			else{
-				tv.setText(first+" - "+(second+1)+" = ");
-				answer = first-(second+1);}
-			}
-		else if (op == 3){
-			tv.setText(first+" x "+second+" = ");
-			answer = first*second;
-			}
+		getMath(tv);
 
 		final EditText et = (EditText)findViewById(R.id.editText1);
 
@@ -86,6 +66,41 @@ public class TimesUp extends ActionBarActivity {
 		if (alarmSound != null){
 			ringtone = RingtoneManager.getRingtone(this,(alarmSound));
 			ringtone.play();
+		}
+	}
+
+	public void getMath(TextView outputview){
+		Random rand = new Random();
+		first = rand.nextInt((100-10)+1)+1;
+		second = rand.nextInt((100-10)+1)+1;
+		op = rand.nextInt((3-1)+1)+1;
+		while (op == 3)
+		{
+			if (first<=5||second<=5)
+			{
+				outputview.setText(first+" x "+second+" = ");
+				answer = first*second;
+			}
+			else
+			{
+				first = rand.nextInt((100-10)+1)+1;
+				second = rand.nextInt((100-10)+1)+1;
+				op = rand.nextInt((2-1)+1)+1;
+			}
+			break;
+		}
+		if (op == 1)
+		{
+			outputview.setText(first+" + "+second+" = ");
+			answer = first+second;
+		}
+		else if (op == 2){
+			if (first != second){
+				outputview.setText(first+" - "+second+" = ");
+				answer = first-second;}
+			else{
+				outputview.setText(first+" - "+(second+1)+" = ");
+				answer = first-(second+1);}
 		}
 	}
 
