@@ -31,7 +31,7 @@ public class TimesUp extends ActionBarActivity {
 
 		final EditText et = (EditText)findViewById(R.id.editText1);
 
-		Button b1 = (Button) findViewById (R.id.button1);
+		Button b1 = (Button) findViewById (R.id.enter);
 		b1.setOnClickListener(new View.OnClickListener() {
 
 			@Override

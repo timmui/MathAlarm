@@ -67,7 +67,7 @@ public class MainActivity extends ActionBarActivity {
             }
         }, mHour, mMinute, false);
 				
-		Button b1 = (Button)findViewById(R.id.button1);
+		Button b1 = (Button)findViewById(R.id.delay);
 		b1.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -79,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 		
-		Button b2 = (Button)findViewById(R.id.b2);
+		Button b2 = (Button)findViewById(R.id.set);
 		b2.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -88,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 		
-		Button b3 = (Button)findViewById(R.id.b3);
+		Button b3 = (Button)findViewById(R.id.ringer);
 		b3.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

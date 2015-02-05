@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MathAlarm</string>
+    <string name="app_name">Math Alarm</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_setData">Pick Time</string>
     <string name="selectedTime">Selected time:</string>
     <string name="selectTime">Select Time</string>
-    <string name="title_activity_second">Second</string>
+    <string name="title_activity_second">Math Alarm</string>
     <string name="setAlarm">Set Alarm</string>
     <string name="setRinger">Set Ringtone</string>
 
